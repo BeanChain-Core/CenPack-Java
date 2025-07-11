@@ -1,0 +1,42 @@
+# Java build files
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# IDE
+.vscode/
+*.iml
+.idea/
+*.ipr
+*.iws
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.swp
+*.swo
+*~
+*.bak
+
+# Node-related (if any frontend tools are added)
+node_modules/
+
+# Logs or temp runtime files
+*.log
+
+
+
+
+

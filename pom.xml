@@ -2,13 +2,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.beanchain</groupId>
-    <artifactId>CenPack</artifactId>
-    <version>BETA</version>
+    <groupId>com.beanchain</groupId>
+    <artifactId>cen-pack-java</artifactId>
+    <version>0.1.0</version>
+    <packaging>jar</packaging>
+
+    <name>CenPack Java SDK</name>
+    <description>Shared logic for BeanChain CEN</description>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
 
     <dependencies>
+        <!-- Crypto -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
@@ -19,6 +30,8 @@
             <artifactId>bcpkix-jdk15on</artifactId>
             <version>1.70</version>
         </dependency>
+
+        <!-- LevelDB -->
         <dependency>
             <groupId>org.iq80.leveldb</groupId>
             <artifactId>leveldb</artifactId>
@@ -29,16 +42,15 @@
             <artifactId>leveldbjni-all</artifactId>
             <version>1.8</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.4.5</version>
-        </dependency>
+
+        <!-- JSON -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.15.0</version>
         </dependency>
+
+        <!-- BeanPack core -->
         <dependency>
             <groupId>com.beanchain</groupId>
             <artifactId>bean-pack-java</artifactId>
@@ -46,37 +58,19 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-    </properties>
-
     <repositories>
-         <repository>
+        <repository>
             <id>github</id>
             <url>https://maven.pkg.github.com/BeanChain-Core/BeanPack-Java</url>
         </repository>
     </repositories>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.5.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>com.beanchain.Main.main</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/BeanChain-Core/CenPack</url>
+        </repository>
+    </distributionManagement>
 
 </project>

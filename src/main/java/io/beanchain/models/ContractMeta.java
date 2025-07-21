@@ -17,14 +17,13 @@ public class ContractMeta {
         
     }
 
-    public ContractMeta(String name, String hash, String address, String pubKey, String creator, long timestamp, String privateKey) {
+    public ContractMeta(String name, String hash, String address, String pubKey, String creator, long timestamp) {
         this.name = name;
         this.hash = hash;
         this.address = address;
         this.pubKey = pubKey;
         this.creator = creator;
         this.timestamp = timestamp;
-        this.privateKey = privateKey;
     }
 
     public ContractHead toHead() { return new ContractHead(name, address, pubKey, creator, 0, 0); }
@@ -46,7 +45,4 @@ public class ContractMeta {
 
     public long getTimestamp() { return timestamp; }
     public void setTimestamp(long timestamp) { this.timestamp = timestamp; }
-
-    public String getPrivateKey() { return privateKey; }
-    public void setPrivateKey(String privateKey) { this.privateKey = privateKey; }
 }

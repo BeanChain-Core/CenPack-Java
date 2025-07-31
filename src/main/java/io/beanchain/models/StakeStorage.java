@@ -1,11 +1,11 @@
 package io.beanchain.models;
 
+import com.beanpack.Utils.beantoshinomics;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class StakeStorage {
     private String stakerAddress;
     private String stakerPubKey;
-    private long beantoshiStaked;
     private long lockedBean;
     private long lastStake;
 
@@ -20,9 +20,6 @@ public class StakeStorage {
         return stakerPubKey;
     }
 
-    public long getBeantoshiStaked() {
-        return beantoshiStaked;
-    }
 
     public long getLockedBean() {
         return lockedBean;
@@ -40,12 +37,12 @@ public class StakeStorage {
         this.stakerPubKey = stakerPubKey;
     }
 
-    public void setBeantoshiStaked(long beantoshiStaked) {
-        this.beantoshiStaked = beantoshiStaked;
+    public void setLockedBean(double lockedBean){
+        this.lockedBean = beantoshinomics.toBeantoshi(lockedBean);
     }
-
-    public void setLockedBean(long lockedBean) {
-        this.lockedBean = lockedBean;
+    
+    public void setLockedBean(long lockedBeanInBeantoshi) {
+        this.lockedBean = lockedBeanInBeantoshi;
     }
 
     public void setLastStake(long lastStake) {

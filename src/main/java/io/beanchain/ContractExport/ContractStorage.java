@@ -48,13 +48,39 @@ public class ContractStorage {
         return new String(b, StandardCharsets.UTF_8);
     }
 
-    public ContractHead getContractHead() throws JsonMappingException, JsonProcessingException{
-        ObjectMapper mapper = new ObjectMapper();
+    public ContractHead getContractHead() throws JsonMappingException, JsonProcessingException {
         String head = get("head");
-        return mapper.readValue(head, ContractHead.class);
+        if (head == null) {
+            throw new IllegalStateException("Missing contract head for this contract storage");
+        }
+        return new ObjectMapper().readValue(head, ContractHead.class);
     }
 
-    public void saveContractHead(ContractHead contractHead) {
+    public void saveContractHead(ContractHead contractHead) throws JsonMappingException, JsonProcessingException {
         put("head", contractHead.toJson());
-    } 
+    }
+
+    public int getContractNonce() throws JsonMappingException, JsonProcessingException{
+        ContractHead head = getContractHead();
+        return head.getContractNonce();
+    }
+
+    public int getContractLayer2Nonce() throws JsonMappingException, JsonProcessingException{
+        ContractHead head = getContractHead();
+        return head.getContractLayer2Nonce();
+    }
+    
+    public void incrimentNonce() throws JsonMappingException, JsonProcessingException{
+        ContractHead head = getContractHead();
+        int nonce = head.getContractNonce();
+        head.setContractNonce(nonce + 1);
+        saveContractHead(head);
+    }
+
+    public void incrimentL2Nonce() throws JsonMappingException, JsonProcessingException{
+        ContractHead head = getContractHead();
+        int nonce = head.getContractLayer2Nonce();
+        head.setContractLayer2Nonce(nonce + 1);
+        saveContractHead(head);
+    }
 }

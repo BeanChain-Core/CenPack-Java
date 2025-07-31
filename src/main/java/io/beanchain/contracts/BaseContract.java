@@ -4,6 +4,8 @@ import org.iq80.leveldb.DB;
 
 import com.beanpack.TXs.CENCALL;
 
+import io.beanchain.tickets.TicketBill;
+
 /**
  * The {@code BaseContract} interface defines the required structure for all 
  * Java-based smart contracts executed by a Contract Execution Node (CEN) 
@@ -70,7 +72,7 @@ public interface BaseContract {
      * This may include minting tokens, setting parameters, or writing default values 
      * to the contract memory store.
      */
-    void init();
+    TicketBill init();
 
     /**
      * Called on each user or system interaction with the contract.
@@ -79,5 +81,5 @@ public interface BaseContract {
      * @param call A {@code CENCALL} object containing method name, caller address, 
      *             and parameter payload for the contract invocation.
      */
-    void execute(CENCALL call);
+    TicketBill execute(CENCALL call);
 }
